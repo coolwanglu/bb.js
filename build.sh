@@ -33,6 +33,6 @@ $EM_DIR/emcc \
 popd
 }
 
-do_config
+#do_config
 do_make
 do_link
