@@ -103,6 +103,7 @@ int bbupdate()
     tl_update_time();
     update_sound();
     TIME = tl_lookup_timer(scenetimer);
+    emscripten_sleep(1);
     ch = aa_getkey(context, 0);
     switch (ch) {
     case 's':
@@ -189,6 +190,7 @@ void bbflushwait(int maxtime)
     wait = maxtime + starttime - TIME;
     if (wait > 0) {
 	aa_flush(context);
+    emscripten_sleep(1);
     }
     bbwait(maxtime);
 }

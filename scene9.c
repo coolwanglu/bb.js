@@ -57,6 +57,7 @@ static void draw3d(void)
     disp3d();
     aa_render(context, params, 0, 0, aa_scrwidth(context), aa_scrheight(context));
     aa_flush(context);
+    emscripten_sleep(1);
 }
 
 static void do3d(int time)

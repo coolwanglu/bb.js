@@ -96,6 +96,7 @@ static void ui_display(void)
     displayed = 1;
     aa_render(context, params, 0, 0, aa_imgwidth(context), aa_imgheight(context));
     aa_flush(context);
+    emscripten_sleep(1);
 
 #if 0
     if (numbertype != FORMULA)

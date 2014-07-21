@@ -175,6 +175,7 @@ int main(int argc, char *argv[])
     bbinit(argc, argv);
     aa_puts(context, 0, p++, AA_SPECIAL, "Music (GUS,SB,SS or PC speaker)?[Y/n]");
     aa_flush(context);
+    emscripten_sleep(1);
     if (tolower(aa_getkey(context, 1)) != 'n') {
 	aa_puts(context, 0, p++, AA_SPECIAL, "Sample rate");
 	do {
@@ -183,14 +184,17 @@ int main(int argc, char *argv[])
 	} while (sscanf(s, "%i", &freq) == 0 || freq < 8000 || freq > 100000);
 	aa_puts(context, 0, p++, AA_SPECIAL, "Stereo?[Y/n]");
 	aa_flush(context);
+    emscripten_sleep(1);
 	if (tolower(aa_getkey(context, 1)) == 'n')
 	    stereo = 0;
 	aa_puts(context, 0, p++, AA_SPECIAL, "16 bit?[Y/n]");
 	aa_flush(context);
+    emscripten_sleep(1);
 	if (tolower(aa_getkey(context, 1)) == 'n')
 	    _16bit = 0;
 	aa_puts(context, 0, p++, AA_SPECIAL, "Interpolation?[y/N]");
 	aa_flush(context);
+    emscripten_sleep(1);
 	if (tolower(aa_getkey(context, 1)) == 'y')
 	    interpolate = 1;
 

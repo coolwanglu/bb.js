@@ -83,6 +83,7 @@ static void morphdraw()
     }
     aa_fastrender(context, 0, YSTART, aa_scrwidth(context), aa_scrheight(context));
     aa_flush(context);
+    emscripten_sleep(1);
 }
 
 static void morph()
@@ -262,6 +263,7 @@ void credits2(void)
 	    morph();
 	    displaytext(p);
 	    aa_flush(context);
+        emscripten_sleep(1);
 	    plast = p;
 	}
       again:
@@ -321,6 +323,7 @@ void credits2(void)
 	    textclrscr();
 	    drawptr = NULL;
 	    aa_flush(context);
+        emscripten_sleep(1);
 	    free(source);
 	    free(target);
 	    return;

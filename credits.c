@@ -389,6 +389,7 @@ void credits(void)
     windangle = 0, toangle = 0;
     textclrscr();
     aa_flush(context);
+    emscripten_sleep(1);
     load_song("bb2.s3m");
     precalculate();
     bbupdate();

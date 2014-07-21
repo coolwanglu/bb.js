@@ -131,6 +131,7 @@ static void draw_plasma(void)
 
     aa_renderpalette(context, TempPal, params, 0, 0, aa_imgwidth(context), aa_imgheight(context));
     aa_flush(context);
+    emscripten_sleep(1);
 }
 
 static void move_plasma(void)

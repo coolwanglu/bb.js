@@ -25,6 +25,7 @@
 #define BB_H
 #include <aalib.h>
 #include <aaint.h>
+#include <emscripten.h>
 #include "image.h"
 #include "timers.h"
 struct font {
