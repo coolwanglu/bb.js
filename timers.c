@@ -51,6 +51,7 @@
 #include <go32.h>
 #include <dpmi.h>
 #endif
+#include <emscripten.h>
 #include "timers.h"
 #include "bb.h"
 #ifdef HAVE_UCLOCK
@@ -162,29 +163,7 @@ int inline tl_lookup_timer(tl_timer * t)
 }
 void tl_sleep(int time)
 {
-#ifdef POOL_SOUND
-#else
-#ifdef HAVE_USLEEP
-    usleep(time);
-#else
-#ifdef HAVE_SELECT
-    {
-	struct timeval tv;
-	tv.tv_sec = time / 1000000L;
-	tv.tv_usec = time % 1000000L;
-	(void) select(0, (void *) 0, (void *) 0, (void *) 0, &tv);
-    }
-#else
-#ifdef _plan9_
-    sleep(time / 1000);
-#else
-/*#warning tl_sleep function not implemented. You may ignore this warning.
-#warning xaos will work correctly. But on miltitasked enviroments it is
-#warning HIGHLY recomended to implement this.*/
-#endif
-#endif
-#endif
-#endif
+    emscripten_sleep(time / 1000);
 }
 
 void tl_reset_timer(tl_timer * t)

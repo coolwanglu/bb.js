@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 [ -z $EM_DIR] && EM_DIR=~/src/emscripten
-[ -z $PDCurses_DIR] && PDCurses_DIR=~/src/PDCurses.js
 [ -z $AALib_DIR] && AALib_DIR=~/src/aalib.js
 
 do_config() {
@@ -21,13 +20,14 @@ do_link() {
 pushd web
 cp ../bb bb.bc 
 $EM_DIR/emcc \
+    -Oz \
+    -profiling \
+    -s ASYNCIFY=1 \
+    -o bb.js \
     bb.bc \
     $AALib_DIR/src/.libs/libaa.a \
-    $PDCurses_DIR/sdl1/libpdcurses.a \
-    -o bb.html \
-    -Oz \
+    --js-library $AALib_DIR/web/aaweb.js \
     --memory-init-file 1 \
-    -s ASYNCIFY=1 \
     --preload-file pdcfont.bmp \
 
 popd
