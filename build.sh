@@ -21,14 +21,12 @@ pushd web
 cp ../bb bb.bc 
 $EM_DIR/emcc \
     -Oz \
-    -profiling \
     -s ASYNCIFY=1 \
     -o bb.js \
     bb.bc \
     $AALib_DIR/src/.libs/libaa.a \
     --js-library $AALib_DIR/web/aaweb.js \
     --memory-init-file 1 \
-    --preload-file pdcfont.bmp \
 
 popd
 }
