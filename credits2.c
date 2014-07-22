@@ -267,6 +267,7 @@ void credits2(void)
 	    plast = p;
 	}
       again:
+    emscripten_sleep(1);
 #ifndef __DJGPP__
 	ch = aa_getkey(context, 1);
 #else
